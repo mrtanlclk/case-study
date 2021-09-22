@@ -1,0 +1,57 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Parent Category</th>
+            <th scope="col">Category Description</th>
+            <th scope="col">Category Photo</th>
+            <th scope="col">Go To Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of category; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{category.CategoryName}}</td>
+            <td>{{category.ParentCategory}}</td>
+            <td style="width: 400px;">{{category.CategoryDescription}}</td>
+            <td><img class="img" src="{{category.CategoryPhoto}}" alt=""></td>
+            <td><button type="button" class="btn btn-primary" routerLink="/products/{{category.id}}">Link</button></td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div class="checkbox">
+
+    <label for="check" class="checkbtn">
+        <div class="button">Show Add Category Form</div>
+    </label>
+</div><br><br>
+<input type="checkbox" id="check" required autofocus autocomplete="off">
+
+<div class="container">
+    <form id="form" class="form" [formGroup]="form">
+        <h2>{{title2}}</h2>
+        <div class="form-control">
+            <label for="name">Product Name:</label>
+            <input type="text" formControlName="CategoryName" id="name" name="name" placeholder="Enter name" required
+                autofocus autocomplete="off">
+            <small>Error Message</small>
+        </div>
+        <div class="form-control">
+            <label for="description">Description:</label>
+            <input type="text" formControlName="CategoryDescription" name="description" id="description"
+                placeholder="Enter description" required autofocus autocomplete="off">
+            <small>Error Message</small>
+        </div>
+        <div class="form-control">
+            <label for="image">Image:</label><br>
+            <input type="text" id="image" formControlName="CategoryPhoto" name="image" placeholder="Enter image url"
+                required autofocus autocomplete="off">
+            <small>Error Message</small>
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="add()">Add Category</button>
+    </form>
+</div>

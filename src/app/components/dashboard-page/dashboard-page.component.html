@@ -1,0 +1,17 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Categories</th>
+            <th scope="col">total sales amounts</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of category;let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{category.CategoryName}}</td>
+            <td>{{totalOfAmount[i] | currency:'USD'}}</td>
+        </tr>
+
+    </tbody>
+</table>

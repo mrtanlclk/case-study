@@ -1,0 +1,91 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Related Categories</th>
+            <th scope="col">Product Description</th>
+            <th scope="col">Product Photo</th>
+            <th scope="col">Product Gender</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of product; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{product.ProductName}}</td>
+            <td>{{product.RelatedCategories}}</td>
+            <td style="width: 400px;">{{product.ProductDescription}}</td>
+            <td><img class="img" src="{{product.ProductPhoto}}" alt=""></td>
+            <td>{{product.ProductGender}}</td>
+            <td>{{product.Price | currency:'USD'}}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div class="checkbox">
+
+    <label for="check" class="checkbtn">
+        <div class="button">Show Add Product Form</div>
+    </label>
+</div><br><br>
+<input type="checkbox" id="check" required autofocus autocomplete="off">
+
+<div class="container">
+
+
+    <form id="form" class="form" [formGroup]="addform">
+        <h2>{{title2}}</h2>
+        <div class="form-control">
+            <label for="name">Product Name:</label>
+            <input type="text" formControlName="ProductName" id="ProductName" name="ProductName"
+                placeholder="Enter name" required autofocus autocomplete="off">
+
+        </div>
+        <div class="form-control">
+            <label for="name">Product Description:</label>
+            <input type="text" formControlName="ProductDescription" id="ProductDescription" name="ProductDescription"
+                placeholder="Enter descirption" required autofocus autocomplete="off">
+
+        </div>
+        <div class="form-control">
+            <label for="image">Image:</label>
+            <input type="text" id="ProductPhoto" formControlName="ProductPhoto" name="ProductPhoto"
+                placeholder="Enter image url" required autofocus autocomplete="off">
+
+        </div>
+        <div class="form-control">
+            <label for="name">Price:</label>
+            <input type="number" formControlName="Price" id="Price" name="Price" placeholder="Enter price" required
+                autofocus autocomplete="off">
+
+        </div>
+        <div class="form-control">
+            <label for="Categoryid">Choose Category:</label>
+            <select class="form-group" formControlName="Categoryid" required id="Categoryid" name="Categoryid"
+                aria-label="Default select example">
+
+                <option *ngFor="let category of category" [value]="category.id">{{category.CategoryName}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-control">
+            <label for="ProductGender">Choose Gender:</label>
+            <select class="form-group" formControlName="ProductGender" required id="ProductGender" name="ProductGender"
+                aria-label="Default select example">
+                <option>Boy</option>
+                <option>Girl</option>
+                <option>Unisex</option>
+            </select>
+        </div>
+
+        <div class="form-control">
+            <label for="name">Price:</label>
+            <input type="number" formControlName="SalesQuantity" id="SalesQuantity" name="SalesQuantity"
+                placeholder="Enter Sales Quantity" required autofocus autocomplete="off">
+        </div>
+        <button type="button" class="btn btn-primary" (click)="add()">Add Product</button>
+    </form>
+</div>
