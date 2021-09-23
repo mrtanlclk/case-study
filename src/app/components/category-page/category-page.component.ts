@@ -50,7 +50,7 @@ export class CategoryPageComponent implements OnInit {
     this.newCategory = Object.assign({}, this.form.value);
     this.categoryService.addCategory(this.newCategory).subscribe((data) => {
       this.newCategory = data;
+      this.getCategories();
     });
-    this.getCategories();
   }
 }

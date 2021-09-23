@@ -35,8 +35,8 @@ export class ProductsPageComponent implements OnInit {
   getCategories() {
     this.categoryService.getCategory().subscribe((data) => {
       this.category = data;
+      this.createProduct();
     });
-    this.createProduct();
   }
 
   getProducts() {
@@ -45,10 +45,9 @@ export class ProductsPageComponent implements OnInit {
         .getProducts(params['Categoryid'])
         .subscribe((data) => {
           this.product = data;
+          this.createProduct();
         });
     });
-
-    this.createProduct();
   }
   createProduct() {
     this.addform = this.formBuilder.group({
@@ -68,6 +67,8 @@ export class ProductsPageComponent implements OnInit {
     this.newProduct = Object.assign({}, this.addform.value);
     this.productService.addProduct(this.newProduct).subscribe((data) => {
       this.newProduct = data;
+      this.getProducts();
+      this.getCategories();
     });
   }
 }
